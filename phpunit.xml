@@ -1,0 +1,9 @@
+<phpunit>
+  <testsuites>
+
+    <testsuite name="phplib/report">
+      <file>tests/test_phplib_report.php</file>
+    </testsuite>
+
+  </testsuites>
+</phpunit>

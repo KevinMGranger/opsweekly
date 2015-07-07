@@ -6,4 +6,4 @@ php:
 install:
   - test -f ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini && echo "short_open_tag=On" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini || true
   - composer install
-script: ./vendor/bin/phpunit tests/*
+script: ./vendor/bin/phpunit
