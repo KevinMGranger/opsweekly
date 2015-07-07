@@ -1,8 +1,12 @@
-<phpunit>
+<phpunit bootstrap="tests/Bootstrap.php">
   <testsuites>
 
     <testsuite name="phplib/report">
       <file>tests/test_phplib_report.php</file>
+    </testsuite>
+
+    <testsuite name="FQDN">
+      <file>tests/test_FQDN.php</file>
     </testsuite>
 
   </testsuites>

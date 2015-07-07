@@ -5,12 +5,15 @@ if (!file_exists('phplib/config.php')) {
     die('Cannot find config.php! It must be in phplib and named config.php');
 }
 
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once 'config.php';
 require_once 'oncall.php';
 require_once 'irccat.php';
 require_once 'pagination.class.php';
 // report.php contains report rendering functions
 include_once 'phplib/report.php';
+
+use Etsy\Opsweekly\FQDN;
 
 $pages = array("/index.php" => "Overview", "/add.php" => "Add", "/report.php" => "Reports", "/meeting.php" => "Meeting");
 $pages_icon = array("/index.php" => "icon-home", "/add.php" => "icon-plus-sign", "/report.php" => "icon-list-alt", "/meeting.php" => "icon-bullhorn");
@@ -30,10 +33,9 @@ $sleep_state_icons = array(0 => "icon-eye-open", 1 => "icon-eye-close");
 $sleep_state_levels = array(-1 => "Unknown", 1 => "NREM Stage 1", 2 => "NREM Stage 2", 3 => "NREM Stage 3", 4 => "REM");
 
 
-// Test to make sure we can handle this team
-// .. and handle dev
-$fqdn = (isset($fqdn)) ? $fqdn : $_SERVER['HTTP_HOST'];
-$fqdn = preg_replace($dev_fqdn, $prod_fqdn, $fqdn);
+// Test to make sure we can handle this team.
+$fqdn = isset($fqdn) ? $fqdn : $_SERVER['HTTP_HOST'];
+$fqdn = (new FQDN($fqdn, $dev_fqdn, $prod_fqdn))->getFQDN();
 
 if (!$team_data = getTeam($fqdn)) {
     die("I don't know what to do with this FQDN, please add it to config.php");

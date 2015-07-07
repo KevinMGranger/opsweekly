@@ -255,11 +255,17 @@ $search_results_per_page = 25;
 // Path to disk where a debug error log file can be written
 $error_log_file = "/var/log/httpd/opsweekly_debug.log";
 
-// Dev FQDN
-// An alternative FQDN that will be accepted by Opsweekly for running a development copy elsewhere
-// Fed into preg_replace so regexes are allowed
+/**
+ * Dev FQDN: An alternative FQDN that will be accepted by
+ * Opsweekly for running a development copy elsewhere.
+ * The prod FQDN is then subsituted in place of the above string.
+ *
+ * These are fed into preg_replace so regexes are allowed.
+ *
+ * Both of these are optional. Either don't define them or make them
+ * falsey to disable.
+ */
 $dev_fqdn = "/(\w+).vms.mycompany.com/";
-// The prod FQDN is then subsituted in place of the above string.
 $prod_fqdn = "mycompany.com";
 
 // Global configuration for irccat, used to send messages to IRC about weekly meetings.

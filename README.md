@@ -59,6 +59,7 @@ Alert classification is a complicated task, but with Opsweekly a few simple ques
 1. Load the database schema into MySQL, e.g. `mysql -u opsweekly_user opsweekly < opsweekly.sql`
 1. [Teach Opsweekly how to authenticate your users](#authenticating-with-opsweekly).
 1. Move phplib/config.php.example to phplib/config.php, edit with your favourite editor (more detail below)
+1. Run `./composer.phar install`
 1. Load Opsweekly in your browser
 1. Reward yourself with a refreshing beverage.
 
@@ -182,7 +183,7 @@ There are a few other configuration options, which are documented in the example
 * `$email_from_domain`: The domain name you use to send email, used for a "From" address when sending weekly reports. 
 * `$search_results_per_page`: Allows control of the number of search results returned at once
 * `$error_log_file`: Opsweekly prints some events, especially relating to on call fetching and Sleep tracking to a debug log file. This log file can be extremely useful at debugging provider issues. 
-* `$dev_fqdn`, `$prod_fqdn`: To allow ease of development, Opsweekly will preg_replace the hostname given to it to another hostname (which then matches your team names in the `$teams` array). 
+* `$dev_fqdn`, `$prod_fqdn`: To allow ease of development, Opsweekly will preg_replace the hostname given to it to another hostname (which then matches your team names in the `$teams` array). These are optional.
 * `$irccat_hostname`, `$irccat_port`: If you use irccat and wish to use meeting reminders, and have them appear in IRC, you will need to configure the hostname and port your irccat instance runs at here. 
 
 ## A note on on-call classification and categorisation
